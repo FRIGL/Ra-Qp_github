@@ -5,19 +5,26 @@ using UnityEngine;
 [System.Serializable]
 public class TupleSaveObject
 {
-    public List<TupleVariableSaveObject> variables;
+    public List<TupleVariableSaveObject> variables = new List<TupleVariableSaveObject>();
 
     //copy consuctor 
-    public TupleSaveObject(List<TupleVariableSaveObject> variables) 
+    public TupleSaveObject(TupleSaveObject tupleSaveObject) 
     {
+        //deepcopy the tupleSaveObject
+        foreach (TupleVariableSaveObject thisTupleVariable in tupleSaveObject.GetVariables())
+        {
+            TupleVariableSaveObject newTupleVariable = new TupleVariableSaveObject(thisTupleVariable);
+            variables.Add(newTupleVariable);
+        }
+
         //i could use this to migrate the date form differnt versions of the TupleVariableSaveObject
 
-        this.variables = variables;
+        //this.variables = tupleSaveObject.GetVariables();
     }
 
     public List<TupleVariableSaveObject> GetVariables() 
     {
-        return variables;
+        return this.variables;
     }
 
     public void AddVariable() 

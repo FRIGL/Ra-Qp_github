@@ -2,19 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TupleList : MonoBehaviour
+[System.Serializable]
+public class TupleList
 {
-    public List<TupleSaveObject> tuples; 
+    public List<TupleSaveObject> tuples;
 
-    // Start is called before the first frame update
-    void Start()
+    public List<TupleSaveObject> GetTuples(){ return tuples; }
+
+    public void AddElement(TupleSaveObject tupleSaveObjectToAdd)
     {
-        
+        //deep copy the tupleSaveObjectToAdd, and add it to the tuples list
+        tuples.Add(new TupleSaveObject(tupleSaveObjectToAdd));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SubtractElement()
     {
-        
+        if (tuples.Count > 0)
+        {
+            tuples.RemoveAt(tuples.Count - 1);
+        }
     }
 }

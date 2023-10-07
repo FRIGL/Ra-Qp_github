@@ -18,7 +18,7 @@ public class TupleManager : MonoBehaviour
         BuildTupleVariableList();
     }
 
-    public TupleSaveObject GetTupleSaveObject(){ return tupleSaveObject; }
+    public TupleSaveObject GetDefaltTupleSaveObject(){ return tupleSaveObject; }
 
     public void ReBuildTupleVariableList()
     {
@@ -39,7 +39,7 @@ public class TupleManager : MonoBehaviour
         for (int i = 0; i < tupleSaveObject.GetVariables().Count; i++)
         {
             RectTransform newTupleVariable = Instantiate(tupleVariablePrefab, Vector3.zero, Quaternion.identity);
-            newTupleVariable.transform.parent = tupleVariableList;
+            newTupleVariable.transform.SetParent(tupleVariableList);
             newTupleVariable.anchoredPosition = tupleVariableOffset * i;
 
             TupleVariableManager newTupleVariableManager = newTupleVariable.gameObject.GetComponent<TupleVariableManager>();

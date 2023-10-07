@@ -12,6 +12,13 @@ public class TupleVariableSaveObject
         this.variableValue = "0";
     }
 
+    public TupleVariableSaveObject(TupleVariableSaveObject tupleVariableSaveObject)
+    {
+        this.variableName = tupleVariableSaveObject.variableName;
+        this.variableType = tupleVariableSaveObject.variableType;
+        this.variableValue = tupleVariableSaveObject.variableValue;
+    }
+
     public string GetVariableName(){ return variableName; }
     public int GetVariableType() { return variableType; }
     public string GetVariableValue() { return variableValue; }
