@@ -38,12 +38,12 @@ public class QuiryJoin : Query
 
 
         //make a deepCopy, of the filteredTupleList
-        TupleList tempTupleList = new TupleList(filteredTupleList);
-        testList = tempTupleList;
+        //TupleList tempTupleList = new TupleList(filteredTupleList);
+        //testList = tempTupleList;
 
         //find the output List, if it dose not exist GetTupleListManager makes a new one and returns that instead
-        TupleListManager tupleListManager = TupleListsOrganizer.singleton.GetTupleListManager(outputList);
-        tupleListManager.Set(outputList, tempTupleList);
+        //TupleListManager tupleListManager = TupleListsOrganizer.singleton.GetTupleListManager(outputList);
+        //tupleListManager.Set(outputList, tempTupleList);
     }
 
     public override TupleList QueryList()
