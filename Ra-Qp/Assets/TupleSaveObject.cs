@@ -7,6 +7,11 @@ public class TupleSaveObject
 {
     public List<TupleVariableSaveObject> variables = new List<TupleVariableSaveObject>();
 
+    public TupleSaveObject()
+    {
+
+    }
+
     //copy consuctor 
     public TupleSaveObject(TupleSaveObject tupleSaveObject) 
     {
@@ -20,6 +25,19 @@ public class TupleSaveObject
         //i could use this to migrate the date form differnt versions of the TupleVariableSaveObject
 
         //this.variables = tupleSaveObject.GetVariables();
+    }
+
+    public bool HasVariable(string variableName)
+    {
+        foreach (TupleVariableSaveObject variable in variables)
+        {
+            if (variable.GetVariableName() == variableName)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public string GetValue(string variableName) 
@@ -43,6 +61,11 @@ public class TupleSaveObject
     public void AddVariable() 
     {
         variables.Add(new TupleVariableSaveObject());
+    }
+
+    public void AddVariable(TupleVariableSaveObject tupleVariableSaveObject)
+    {
+        variables.Add(new TupleVariableSaveObject(tupleVariableSaveObject));
     }
 
     public void SubtractVariable() 

@@ -18,6 +18,7 @@ public class TupleListElementManager : MonoBehaviour
         {
             RectTransform newListElementVariable = Instantiate(TupleListElementVariablePrefab, Vector3.zero, Quaternion.identity);
             newListElementVariable.transform.SetParent(this.transform);
+            newListElementVariable.localScale = Vector3.one;
             newListElementVariable.anchoredPosition = new Vector2(tupleListXOffset * i, 0);
 
             TupleListElementVariableManager manager = newListElementVariable.gameObject.GetComponent<TupleListElementVariableManager>();

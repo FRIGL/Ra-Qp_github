@@ -79,6 +79,7 @@ public class TupleListManager : MonoBehaviour
             {
                 RectTransform newTupleListKey = Instantiate(TupleListKeyPrefab, Vector3.zero, Quaternion.identity);
                 newTupleListKey.transform.SetParent(tupleListKeysList);
+                newTupleListKey.localScale = Vector3.one;
                 newTupleListKey.anchoredPosition = new Vector2(tupleListXOffset * i, 0);
 
                 TupleListKeyManager newTupleListKeyManager = newTupleListKey.gameObject.GetComponent<TupleListKeyManager>();
@@ -90,6 +91,7 @@ public class TupleListManager : MonoBehaviour
             {
                 RectTransform newTupleListElement = Instantiate(TupleListElementPrefab, Vector3.zero, Quaternion.identity);
                 newTupleListElement.transform.SetParent(tupleListElementsList);
+                newTupleListElement.localScale = Vector3.one;
                 newTupleListElement.anchoredPosition = new Vector2(0, tupleListYOffset * i);
 
                 TupleListElementManager newTupleListElementManager = newTupleListElement.gameObject.GetComponent<TupleListElementManager>();
