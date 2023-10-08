@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TupleListManager : MonoBehaviour
 {
-    public TupleManager tupleManager;
+    public bool main = false; 
+
     public TupleList tupleList;
 
+    public Text nameText; 
+
+    [Header("spacing")]
     public float tupleListXOffset = 0;
     public float tupleListYOffset = 0;
 
@@ -18,10 +23,32 @@ public class TupleListManager : MonoBehaviour
     public RectTransform TupleListKeyPrefab;
     public RectTransform TupleListElementPrefab;
 
+    public string GetName(){ return tupleList.name; }
+    public TupleList GetTupleList(){ return tupleList; }
+
+
+    public void Set(string name, TupleList tupleList) 
+    {
+        if(main == false) 
+        {      
+            this.tupleList = tupleList;
+            this.tupleList.name = name;
+        }
+
+        Initialize();
+    }
+
+
+
+    public void Initialize() 
+    {
+        nameText.text = GetName();
+        ReBuildTupleList();
+    }
 
     private void Start()
     {
-        BuildTupleList();
+        Initialize();
     }
 
     public void ReBuildTupleList()
@@ -76,7 +103,7 @@ public class TupleListManager : MonoBehaviour
 
     public void AddElement()
     {
-        tupleList.AddElement(tupleManager.GetDefaltTupleSaveObject());
+        tupleList.AddElement(TupleManager.singleton.GetDefaltTupleSaveObject());
         ReBuildTupleList();
     }
 

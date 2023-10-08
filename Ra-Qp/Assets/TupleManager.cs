@@ -5,18 +5,34 @@ using UnityEngine.UI;
 
 public class TupleManager : MonoBehaviour
 {
+    #region Singleton-Shenanigans
+
+    public static TupleManager singleton;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (singleton && singleton != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            singleton = this;
+        }
+
+        BuildTupleVariableList();
+    }
+
+    #endregion
+
+
     public TupleSaveObject tupleSaveObject;
 
     public RectTransform tupleVariableList;
 
     public RectTransform tupleVariablePrefab;
     public Vector2 tupleVariableOffset = new Vector2(0, 0); 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        BuildTupleVariableList();
-    }
 
     public TupleSaveObject GetDefaltTupleSaveObject(){ return tupleSaveObject; }
 
@@ -40,6 +56,7 @@ public class TupleManager : MonoBehaviour
         {
             RectTransform newTupleVariable = Instantiate(tupleVariablePrefab, Vector3.zero, Quaternion.identity);
             newTupleVariable.transform.SetParent(tupleVariableList);
+            newTupleVariable.localScale = Vector3.one;
             newTupleVariable.anchoredPosition = tupleVariableOffset * i;
 
             TupleVariableManager newTupleVariableManager = newTupleVariable.gameObject.GetComponent<TupleVariableManager>();

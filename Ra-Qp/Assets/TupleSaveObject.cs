@@ -22,6 +22,19 @@ public class TupleSaveObject
         //this.variables = tupleSaveObject.GetVariables();
     }
 
+    public string GetValue(string variableName) 
+    {
+        string value = "";
+        foreach (TupleVariableSaveObject variable in variables)
+        {
+            if(variable.GetVariableName() == variableName) 
+            {
+                value = variable.GetVariableValue();
+            }
+        }
+        return value;
+    }
+
     public List<TupleVariableSaveObject> GetVariables() 
     {
         return this.variables;
